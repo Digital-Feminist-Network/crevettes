@@ -1,0 +1,9 @@
+~
+*.swp
+
+dist/*
+*/*.egg-info/*
+__pycache__
+
+.env
+*.csv

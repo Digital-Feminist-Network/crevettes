@@ -50,10 +50,12 @@ def write_to_csv(submission, comments, thread_id):
                 "thread_submitter",
                 "thread_body",
                 "thread_timestamp",
+                "thread_vote_count",
                 "comment_id",
                 "comment_username",
                 "comment_body",
                 "comment_reply_to_id",
+                "comment_vote_count"
             ]
         )
 
@@ -67,6 +69,7 @@ def write_to_csv(submission, comments, thread_id):
                 datetime.fromtimestamp(submission.created_utc).strftime(
                     "%Y-%m-%d %H:%M:%S"
                 ),
+                submission.score,
                 "",
                 "",
                 "",
@@ -91,6 +94,7 @@ def write_to_csv(submission, comments, thread_id):
                         if comment.parent_id != submission.id
                         else ""
                     ),
+                    comment.score
                 ]
             )
 

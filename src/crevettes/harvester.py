@@ -1,5 +1,6 @@
 import csv
 import os
+import re
 from datetime import datetime
 
 import praw
@@ -25,11 +26,21 @@ def fetch_reddit_thread(thread_id):
     return submission, comments
 
 
+# Clean titles for csv filenames.
+def clean_thread_title(title):
+    title = title.lower()
+    title = re.sub(r"[^\w\s-]", "", title)
+    title = re.sub(r"\s+", "-", title)
+
+    return title
+
+
 # Write thread metadata to csv.
 def write_to_csv(submission, comments, thread_id):
-    with open(
-        f"reddit-thread-{thread_id}.csv", mode="w", newline="", encoding="utf-8"
-    ) as file:
+    clean_title = clean_thread_title(submission.title)
+    csv_filename = f"reddit-{thread_id}--{clean_title}.csv"
+
+    with open(csv_filename, mode="w", newline="", encoding="utf-8") as file:
         writer = csv.writer(file)
         writer.writerow(
             [
@@ -82,3 +93,5 @@ def write_to_csv(submission, comments, thread_id):
                     ),
                 ]
             )
+
+    print(f"CSV saved as {csv_filename}")

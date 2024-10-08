@@ -16,7 +16,6 @@ def main():
 
     # Write thread metadata data to csv.
     harvester.write_to_csv(submission, comments, thread_id)
-    print(f"CSV saved as reddit_thread_{thread_id}.csv")
 
 
 if __name__ == "__main__":

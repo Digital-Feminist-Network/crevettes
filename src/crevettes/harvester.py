@@ -86,6 +86,7 @@ def write_to_csv(submission, comments, thread_id):
                     "",
                     "",
                     "",
+                    "",
                     comment.id,
                     (comment.author.name if comment.author else "Deleted"),
                     comment.body,

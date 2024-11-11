@@ -9,14 +9,24 @@ A Python utility to capture a thread and commends for a given Reddit thread. Thi
 
 ## Usage
 
+Local CSV
 ```
 crevettes thread_id
+```
+
+Google Sheets and Local CSV.
+```
+crevettes thread_id google_sheets_folder_id path/to/json/keyfile 
 ```
 
 ## Example
 
 ```
 crevettes 1bq51lp
+```
+
+```
+crevettes 1gnex8a 1Nr1xMEN1WTxrwNfyFz4fg1fTyB3oCAcg
 ```
 
 You will need a `.env` file populated with the following:
